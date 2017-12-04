@@ -1,0 +1,17 @@
+{
+    "sProcessing":   "İşleniyor...",
+    "sLengthMenu":   "Sayfada _MENU_ Kayıt Göster",
+    "sZeroRecords":  "Eşleşen Kayıt Bulunmadı",
+    "sInfo":         "Toplam Kayıt : _TOTAL_ , Gösterilen Kayıt Aralığı : _START_ - _END_",
+    "sInfoEmpty":    "Kayıt Bulunmamaktadır.",
+    "sInfoFiltered": "(Toplam _MAX_ kayıt filtrelendi)",
+    "sInfoPostFix":  "",
+    "sSearch":       "Arama :",
+    "sUrl":          "",
+    "oPaginate": {
+        "sFirst":    "İlk",
+        "sPrevious": "Önceki",
+        "sNext":     "Sonraki",
+        "sLast":     "Son"
+    }
+}

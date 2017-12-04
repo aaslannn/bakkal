@@ -1,0 +1,47 @@
+<?php
+/**
+* Language file for group section titles
+*
+*/
+
+return array(
+    'create'			=> 'Yeni Ürün Ekle',
+    'edit' 				=> 'Ürün Düzenle',
+    'management'	    => 'Ürün Yönetimi',
+    'products'			=> 'Ürünler',
+    'pictures'			=> 'Ürün Görselleri',
+    'options'			=> 'Ürün Seçenekleri',
+	'discountpercent'	=> ':percent indirim',
+	'removeselected'	=> 'Seçtiğim Ürünleri Kaldır',
+	'productfoundcount'	=> ':count ürün var',
+	'noproductincart'	=> 'Alışveriş sepetinizde ürün bulunmamaktadır',
+	'notinstock'		=> 'Stokta Yok',
+	'notinstocknow'		=> 'Ürün stoklarımızda kalmamıştır.',
+	'addtocart'			=> 'Sepete Ekle',
+	'buynow'			=> 'Hemen Al',
+	'addtofavourites'	=> 'Favori Listeme Ekle',
+	'productdescription'=> 'Ürün Açıklaması',
+	'comments'			=> 'Yorumlar',
+	'instoptions'		=> 'Taksit Seçenekleri',
+	'minInstalment'		=> 'Min. Taksit Tutarı',
+	'downloadcatalog'	=> 'PDF Kataloğu İndir',
+	'commentsigninup'	=> 'Yorum yapabilmek için :signuptagüye olun</a> ya da :signintaggiriş yapın.</a>',
+	'commenton'			=> 'Yorum yap',
+	'averagepoint'		=> 'Ortalama Puan',
+	'writecomment'		=> 'Yorum Yazın',
+	'rate'				=> 'Puan Verin',
+	'commentadded'		=> 'Yorumunuz eklenmiştir, teşekkür ederiz.',
+	'commentremoved'	=> 'Yorumunuz silinmiştir.',
+	'editcomment'		=> 'Yorumu Düzenle',
+	'commentchanged'	=> 'Yorumunuz düzenlenmiştir.',
+	'removecomment'		=> 'Yorumu Sil',
+	'instamount'		=> 'Taksit Miktarı',
+	'totalamount'		=> 'Toplam Tutar',
+	'discountproducts'	=> 'İndirimdeki Ürünler',
+	'newproducts'		=> 'Yeni Ürünler',
+	'stockproducts'		=> 'Yalnızca Stokta Olanlar',
+	'pricerange'		=> 'Fiyat Aralığı',
+	'productaddedcart'	=> 'Ürün sepetinize eklenmiştir.',
+	'productstocklimited'	=> 'Bu ürünün stok adedi: :stokadet. Maksimum stok sepetinize eklenmiştir.',
+	'stocklimited'	=> 'Bir seferde yalnızca :stokadet adet sipariş verebilirsiniz.',
+);

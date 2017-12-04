@@ -1,0 +1,26 @@
+.New{font-size:12px;}
+.Damping{font-size:12px;}
+.DiscountRate{font-size:12px; font-weight: 600;}
+.Categories .Category img{height: 186px;}
+
+#BestSelling .Product{border:none;padding: 0;}
+#HeroCarousel .carousel-inner .item .carousel-caption{
+    padding:0 0 0 20px;
+    position:absolute;
+    text-align:left;
+    line-height:30px;
+    font-size:14px;
+    background: none;
+    text-shadow:1px 1px #666;
+}
+#HeroCarousel .carousel-indicators{
+    bottom: -5px;
+    left: auto;
+    right:0;
+}
+#HeroCarousel .carousel-indicators li{
+    background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0
+}
+#HeroCarousel .carousel-controls{
+    display: none;
+}
