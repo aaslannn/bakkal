@@ -79,7 +79,6 @@ class SlidesController extends MainController
 			'title'     => Input::get('title'),
 			'title_tr'     => Input::get('title_tr'),
 			'title_en'     => Input::get('title_en'),
-			'title_es'     => Input::get('title_es'),
 			'link' => Input::get('link'),
 			'status'    => Input::get('status'),
 			'sequence'  => $sequence,
@@ -119,7 +118,6 @@ class SlidesController extends MainController
 
 		$slide->title_tr = Input::get('title_tr');
 		$slide->title_en = Input::get('title_en');
-		$slide->title_es = Input::get('title_es');
 		$slide->link = Input::get('link');
 		$slide->status = Input::get('status');
 		$slide->sequence = Input::get('sequence');

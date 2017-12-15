@@ -104,7 +104,7 @@ class CategoriesController extends MainController
 
         // Declare the rules for the form validation
         $rules = array(
-            'title_tr'     => 'required'
+            'title_en'     => 'required'
         );
 
         // Create a new validator instance from our validation rules
@@ -132,14 +132,13 @@ class CategoriesController extends MainController
 
         $sequence = Categorie::where('parent_id',Input::get('parent_id'))->max('sequence') + 1;
 
-        $url = Str::slug(Input::get('title_tr'));
+        $url = Str::slug(Input::get('title_en'));
         $kayit = Categorie::whereSefurl($url)->count();
         $sefurl = ($kayit) ? $url .'-'. str_random(3) : $url;
 
         $cat = Categorie::create(array(
             'title_tr'     => Input::get('title_tr'),
             'title_en'     => Input::get('title_en'),
-            'title_es'     => Input::get('title_es'),
             'parent_id' => Input::get('parent_id'),
             'content'   => Input::get('content'),
             'sefurl'    => $sefurl,
@@ -172,7 +171,7 @@ class CategoriesController extends MainController
         if($categorie == null) return Redirect::route('categories')->with('error', Lang::get('categories/message.categorie_not_found', compact('id')));
 
         $rules = array(
-            'title_tr'     => 'required'
+            'title_en'     => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -188,7 +187,6 @@ class CategoriesController extends MainController
         $categorie->parent_id = Input::get('parent_id');
         $categorie->title_tr = Input::get('title_tr');
         $categorie->title_en = Input::get('title_en');
-        $categorie->title_es = Input::get('title_es');
         $categorie->status = Input::get('status');
         //$categorie->sefurl = Input::get('title');
 

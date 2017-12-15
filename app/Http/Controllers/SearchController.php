@@ -49,8 +49,7 @@ class SearchController extends FrontController
 
         $products = Product::where(function($wq) use ($query) {
             $wq->where('title_tr','like','%'.$query.'%')
-                ->orWhere('title_en','like','%'.$query.'%')
-                ->orWhere('title_es','like','%'.$query.'%');
+                ->orWhere('title_en','like','%'.$query.'%');
         });
 
         if($catId > 0)

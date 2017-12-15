@@ -25,13 +25,13 @@ class ProdPropRequest extends Request {
 	 */
 	public function rules()
 	{
-        $rules['title_tr'] = 'required|max:255';
+        $rules['title_en'] = 'required|max:255';
 		return $rules;
 	}
 
 	public function attributes()
 	{
-        $attr['title_tr'] = 'Başlık';
+        $attr['title_en'] = 'Başlık';
 		return $attr;
 	}
 

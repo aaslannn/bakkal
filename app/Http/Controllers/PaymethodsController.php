@@ -57,7 +57,7 @@ class PaymethodsController extends MainController
 
         // Declare the rules for the form validation
         $rules = array(
-            'title_tr'     => 'required|unique:paymethods',
+            'title_en'     => 'required|unique:paymethods',
             'uniqueName' => 'required',
             'sequence'  => 'required|numeric',
         );
@@ -96,7 +96,7 @@ class PaymethodsController extends MainController
         if($paymethod == null) return Redirect::route('paymethods')->with('error', Lang::get('paymethods/message.paymethod_not_found', compact('id')));
 
         $rules = array(
-            'title_tr'     => 'required',
+            'title_en'     => 'required',
             'sequence'  => 'required|numeric',
         );
 
@@ -107,7 +107,6 @@ class PaymethodsController extends MainController
 
         $paymethod->title_tr = Input::get('title_tr');
         $paymethod->title_en = Input::get('title_en');
-        $paymethod->title_es = Input::get('title_es');
         $paymethod->sequence = Input::get('sequence');
         $paymethod->status = Input::get('status');
         if ($paymethod->save()) return Redirect::route('paymethods')->with('success', Lang::get('paymethods/message.success.update'));

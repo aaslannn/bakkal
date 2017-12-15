@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-{{ $content->title_tr }}
+{{ $content->title_en }}
 @parent
 @stop
 

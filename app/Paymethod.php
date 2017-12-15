@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Paymethod extends Model
 {
     protected $table = 'paymethods';
-    protected $fillable = ['title_tr', 'title_en', 'title_es', 'status', 'sequence','uniqueName'];
+    protected $fillable = ['title_tr', 'title_en', 'status', 'sequence','uniqueName'];
     
     
     public function setuniqueNameAttribute($url)

@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Content extends Model
 {
     protected $table = 'contents';
-    protected $fillable = ['title_tr','title_en','title_es','content_tr','content_en', 'content_es', 'link', 'sefurl', 'parent_id', 'sequence', 'hidden', 'target', 'tags', 'image', 'type', 'status'];
+    protected $fillable = ['title_tr','title_en','content_tr','content_en', 'link', 'sefurl', 'parent_id', 'sequence', 'hidden', 'target', 'tags', 'image', 'type', 'status'];
 
     public function subcats() {
         return $this->hasMany('App\Content','parent_id');

@@ -52,9 +52,8 @@ class ProdpropertiesController extends MainController
 
         $inputs = array();
         $inputs['pr_id'] = $id;
-        $inputs['title_tr'] = $request->get('title_tr');
+        if($request->has('title_tr')) $inputs['title_tr'] = $request->get('title_tr');
         if($request->has('title_en')) $inputs['title_en'] = $request->get('title_en');
-        if($request->has('title_es')) $inputs['title_es'] = $request->get('title_es');
 
         $prop = new ProductProp($inputs);
         $prop->save();
@@ -69,7 +68,7 @@ class ProdpropertiesController extends MainController
                     $opt = ProductOption::create(array(
                         'pr_id'     => $id,
                         'prop_id'   => $prop->id,
-                        'title_tr'  => trim($option),
+                        'title_en'  => trim($option),
                         'stok'      => 1
                     ));
                 }
@@ -101,9 +100,8 @@ class ProdpropertiesController extends MainController
         $prop =  ProductProp::find($id);
         if($prop == null) return redirect()->route('prodproperties',['id' =>$prId])->with('error', Lang::get('products/message.product_not_found', compact('id')));
 
-        $prop->title_tr = $request->get('title_tr');
+        if($request->has('title_tr')) $prop->title_tr = $request->get('title_tr');
         if($request->has('title_en')) $prop->title_en = $request->get('title_en');
-        if($request->has('title_es')) $prop->title_es = $request->get('title_es');
 
         if ($prop->save())
         {
@@ -115,7 +113,7 @@ class ProdpropertiesController extends MainController
 
                 if(trim($val) != '')
                 {
-                    $opt->title_tr = trim($val);
+                    $opt->title_en = trim($val);
                     $opt->save();
                 }
                 else
@@ -133,7 +131,7 @@ class ProdpropertiesController extends MainController
                         $opt = ProductOption::create(array(
                             'pr_id'     => $id,
                             'prop_id'   => $prop->id,
-                            'title_tr'  => trim($option),
+                            'title_en'  => trim($option),
                             'stok'      => 1
                         ));
                     }

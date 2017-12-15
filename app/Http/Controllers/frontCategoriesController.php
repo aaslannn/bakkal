@@ -128,7 +128,7 @@ class frontCategoriesController extends FrontController
         foreach ($products as $prd){
             $productlist[] = array(                
                 'image'     => "images/sample-products/001.jpg",
-                'title'     => $prd->title_tr,
+                'title'     => $prd->title_en,
                 'url'       => "#".$prd->id,
                 'discount'  => true,
                 'discountPrice' => "299 TL",

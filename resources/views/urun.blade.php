@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-{{ $prd->title_tr }}
+{{ $prd->title_en }}
 @parent
 @stop
 
@@ -171,7 +171,7 @@
                                                                         <select class="form-control" name="opt[{{ $prop->id }}]" id="opt_{{ $prop->id }}">
                                                                             <option value="">@lang('frontend/general.select')</option>
                                                                             @foreach($prop->options as $opt)
-                                                                                <option value="{{ $opt->id }}">{{ $opt->title_tr }}</option>
+                                                                                <option value="{{ $opt->id }}">{{ $opt->title_en }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>

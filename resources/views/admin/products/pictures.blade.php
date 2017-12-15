@@ -52,11 +52,11 @@
                                 <table class="table table-bordered table-striped" id="users">
                                     <tr>
                                         <td style="width: 25%">Ürün Adı</td>
-                                        <td>{{ $product->title_tr }}</td>
+                                        <td>{{ $product->title_en }}</td>
                                     </tr>
                                     <tr>
                                         <td>Kategori</td>
-                                        <td>{{ $product->categorie->title_tr }}</td>
+                                        <td>{{ $product->categorie->title_en }}</td>
                                     </tr>
                                     <tr>
                                         <td>Varsayılan Görsel</td>

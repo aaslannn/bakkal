@@ -61,7 +61,7 @@ Sipariş Detayları
                                 </tr>
                                 <tr>
                                     <td>Ödeme Türü</td>
-                                    <td> {{{ $order->paymethod->title_tr }}} </td>
+                                    <td> {{{ $order->paymethod->title_en }}} </td>
                                 </tr>
                                 @if($order->odemeTuru == 2)
                                     <tr>
@@ -83,7 +83,7 @@ Sipariş Detayları
                                         <div class="col-sm-3">
                                             <select name="status" class="form-control orderStatus" data-id="{{ $order->id }}">
                                                 @foreach($statuses as $status)
-                                                    <option value="{{ $status->id }}" {!! ($status->id == $order->status ? ' selected="selected"' : '') !!}>{{ $status->title_tr }}</option>
+                                                    <option value="{{ $status->id }}" {!! ($status->id == $order->status ? ' selected="selected"' : '') !!}>{{ $status->title_en }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -174,7 +174,7 @@ Sipariş Detayları
                                             <td class="text-center"><img src="{{ \App\Library\Common::getPrdImage($detail->product_id) }}" height="80"></td>
                                             <td class="text-center">
                                                 <a href="{{ url('/urun/'.$detail->product->sefurl) }}" target="_blank">
-                                                    {{ $detail->product->title_tr }} {!! ($detail->option_id ? ' ( <span style="color:#F00;">'.\App\Library\Common::getPropsAndOptions($detail->option_id).'</span> )' : '') !!}
+                                                    {{ $detail->product->title_en }} {!! ($detail->option_id ? ' ( <span style="color:#F00;">'.\App\Library\Common::getPropsAndOptions($detail->option_id).'</span> )' : '') !!}
                                                 </a>
                                             </td>
                                             <td class="text-center">{{ $detail->adet }}</td>

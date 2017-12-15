@@ -73,7 +73,7 @@
                                                     {{ $i+1 }}.
                                                 </label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" id="oldoption_{{ $option->id }}" name="oldoptions[{{ $option->id }}]" class="form-control" placeholder="" value="{{ old('title_tr', $option->title_tr) }}"><br>
+                                                    <input type="text" id="oldoption_{{ $option->id }}" name="oldoptions[{{ $option->id }}]" class="form-control" placeholder="" value="{{ old('title_en', $option->title_tr) }}"><br>
                                                 </div>
                                             </div>
                                             <?php $i++; ?>

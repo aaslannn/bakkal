@@ -8,7 +8,7 @@ class ProductProp extends Model
     public $timestamps = false;
 
     protected $table = 'products_props';
-    protected $fillable = ['pr_id', 'title_tr', 'title_en', 'title_es'];
+    protected $fillable = ['pr_id', 'title_tr', 'title_en'];
 
     public function product() {
         return $this->belongsTo('App\Product','pr_id');

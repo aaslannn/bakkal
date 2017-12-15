@@ -59,7 +59,7 @@
                                 @foreach ($contents as $content)
                                     <tr>
                                         <td>{{{ $content->sequence }}}</td>
-                                        <td>{{{ $content->title_tr }}}</td>
+                                        <td>{{{ $content->title_en }}}</td>
                                         <td>{{{ \App\Sabit::itemStatus($content->status) }}}</td>
                                         <td>
                                             <a href="?up={{ $content->id }}">
@@ -84,7 +84,7 @@
                                         @foreach ($conSubs as $content2)
                                             <tr>
                                                 <td>{{{ $content->sequence.'.'.$content2->sequence }}}</td>
-                                                <td>{{{ $content->title_tr }}} &raquo; {{{ $content2->title_tr }}}</td>
+                                                <td>{{{ $content->title_en }}} &raquo; {{{ $content2->title_en }}}</td>
                                                 <td>{{{ \App\Sabit::itemStatus($content->status) }}}</td>
                                                 <td>
                                                     <a href="?up={{ $content2->id }}">

@@ -24,7 +24,7 @@ class ProductRequest extends Request {
 	public function rules()
 	{
 		$rules =  [
-            'title_tr'  => 'required',
+            'title_en'  => 'required',
             //'code'      => 'unique:products',
             'cat_id'    => 'required|numeric|min:1',
             'price'     => 'required',
@@ -42,7 +42,7 @@ class ProductRequest extends Request {
     public function attributes()
     {
         return [
-            'title_tr'     => 'Başlık',
+            'title_en'     => 'Başlık',
             //'code'      => 'Kod',
             'cat_id'    => 'Kategori',
             'price'     => 'Fiyat',

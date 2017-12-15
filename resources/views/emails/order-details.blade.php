@@ -9,8 +9,8 @@
         <ul style="list-style-type:none">
             <li><b>Sipariş Numarası:</b> {{{ $order->id }}}</li>
             <li><b>Sipariş Tarihi :</b> {{{ $order->created_at }}}</li>
-            <li><b>Sipariş Durumu :</b> {{{ $order->orderstatus->title_tr }}}</li>
-            <li><b>Ödeme Şekli :</b> {{{ $order->paymethod->title_tr }}}</li>
+            <li><b>Sipariş Durumu :</b> {{{ $order->orderstatus->title_en }}}</li>
+            <li><b>Ödeme Şekli :</b> {{{ $order->paymethod->title_en }}}</li>
             <li><b>Toplam Tutar :</b> {{ $settings->para_birim.$order->topTutar }}</li>
         </ul>
     </div>
@@ -47,7 +47,7 @@
                     @foreach($order->orderdetails as $detail)
                         <tr>
                             <td style="padding-left:5px;border-bottom:1px solid #d6d6d6;padding-top:5px;padding-bottom:5px;">
-                                {{ $detail->product->title_tr }} {!! ($detail->option_id > 0 ? '('.$detail->option->title_tr.')' : '') !!}
+                                {{ $detail->product->title_en }} {!! ($detail->option_id > 0 ? '('.$detail->option->title_en.')' : '') !!}
                             </td>
                             <td style="border-bottom:1px solid #d6d6d6;padding-top:5px;padding-bottom:5px;">{{ $detail->adet }}</td>
                             <td style="border-bottom:1px solid #d6d6d6;padding-top:5px;padding-bottom:5px;">{{ $settings->para_birim.number_format($detail->birimFiyat,2) }}</td>

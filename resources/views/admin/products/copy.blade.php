@@ -58,7 +58,7 @@
                         <div class="form-group {{ $errors->first('cat_id', 'has-error') }}">
                             <div class="col-sm-offset-3 col-sm-5">
                                 <div class="alert alert-info margin5">
-                                    <strong>{{Lang::get('frontend/general.info')}}:</strong> "{{ $copy->title_tr }}" adlı ürünün Kategori, Marka, İsim, İçerik ve Ana Fiyat bilgileri kopyalanmıştır.
+                                    <strong>{{Lang::get('frontend/general.info')}}:</strong> "{{ $copy->title_en }}" adlı ürünün Kategori, Marka, İsim, İçerik ve Ana Fiyat bilgileri kopyalanmıştır.
                                 </div>
                             </div>
                         </div>
@@ -73,14 +73,14 @@
                                         <select class="form-control required" required id="cat_id" name="cat_id">
                                             <option value=""  selected="selected">Kategori Seçiniz</option>
                                             @foreach($categories as $cat)
-                                                <option value="{{ $cat->id }}" @if($cat->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif><strong>{{ $cat->title_tr }}</strong></option>
+                                                <option value="{{ $cat->id }}" @if($cat->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif><strong>{{ $cat->title_en }}</strong></option>
                                                 @if($cat->subcats()->count() > 0)
                                                     <?php $subcats = $cat->subcats()->get(); ?>
                                                     @foreach($subcats as $subcat)
-                                                        <option value="{{ $subcat->id }}" @if($subcat->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif> &nbsp;&nbsp;&nbsp; &raquo; {{ $subcat->title_tr }}</option>
+                                                        <option value="{{ $subcat->id }}" @if($subcat->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif> &nbsp;&nbsp;&nbsp; &raquo; {{ $subcat->title_en }}</option>
                                                         <?php $subcats2 = $subcat->subcats()->get(); ?>
                                                         @foreach($subcats2 as $subcat2)
-                                                            <option value="{{ $subcat2->id }}" @if($subcat2->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &raquo; {{ $subcat2->title_tr }}</option>
+                                                            <option value="{{ $subcat2->id }}" @if($subcat2->id == Input::old('cat_id', $copy->cat_id)) selected="selected" @endif> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &raquo; {{ $subcat2->title_en }}</option>
                                                         @endforeach
                                                     @endforeach
                                                 @endif

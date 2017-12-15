@@ -72,14 +72,14 @@
                                         <td>
                                             <a href="{{ route('update/categorie', $categorie->id) }}">
                                             @if($categorie->image)
-                                                <img src="{{{ url('/').'/uploads/categories/'.$categorie->image }}}" alt="{{{ $categorie->title_tr }}}" style="width:120px; max-height:50px;  margin-right: 3px;">
+                                                <img src="{{{ url('/').'/uploads/categories/'.$categorie->image }}}" alt="{{{ $categorie->title_en }}}" style="width:120px; max-height:50px;  margin-right: 3px;">
                                             @endif
-                                            {{{ $categorie->title_tr }}}
+                                            {{{ $categorie->title_en }}}
                                             </a>
                                         </td>
                                         <td>
                                             @if($categorie->parent_id > 0 && isset($parent))
-                                                {{{ $parent->title_tr  }}}
+                                                {{{ $parent->title_en  }}}
                                             @else
                                                 -
                                             @endif

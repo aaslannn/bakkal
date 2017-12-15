@@ -63,7 +63,7 @@
                                         <td>{{{ $slide->id }}}</td>
                                         <td>{{{ $slide->sequence }}}</td>
                                         <td><img src="{{{ url('/').'/uploads/slides/'.$slide->image }}}" height="80"></td>
-                                        <td>{{{ $slide->title_tr }}}</td>
+                                        <td>{{{ $slide->title_en }}}</td>
                                         <td>{{{ $slide->link }}}</td>
                                         <td>{{{ \App\Sabit::itemStatus($slide->status) }}}</td>
                                         <td>

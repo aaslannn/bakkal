@@ -115,7 +115,7 @@ class ProductsController extends MainController
 
         $inputs = $request->except('_token','file','images');
 
-        $url = Str::slug(Input::get('title_tr'));
+        $url = Str::slug(Input::get('title_en'));
         $kayit = Product::whereSefurl($url)->count();
         $inputs['sefurl'] = ($kayit) ? $url .'-'. str_random(3) : $url;
 
@@ -231,7 +231,7 @@ class ProductsController extends MainController
         if($product == null) return Redirect::route('products')->with('error', Lang::get('products/message.product_not_found', compact('id')));
 
         $rules = array(
-            'title_tr'     => 'required',
+            'title_en'     => 'required',
             'code'      => 'unique:products,code,'.$id.'',
             'cat_id'    => 'required|numeric|min:1',
             'price'     => 'required',
@@ -247,12 +247,10 @@ class ProductsController extends MainController
         $product->cat_id = Input::get('cat_id');
         $product->title_tr = Input::get('title_tr');
         $product->title_en = Input::get('title_en');
-        $product->title_es = Input::get('title_es');
         $product->code = Input::get('code');
         $product->brand_id = Input::get('brand_id');
         $product->content_tr = Input::get('content_tr');
         $product->content_en = Input::get('content_en');
-        $product->content_es = Input::get('content_es');
         $product->price = Input::get('price');
         $product->discount_price = Input::get('discount_price');
         $product->discount = Input::get('discount');
@@ -520,7 +518,7 @@ class ProductsController extends MainController
 
         // Declare the rules for the form validation
         $rules = array(
-            'title_tr'     => 'required',
+            'title_en'     => 'required',
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -532,7 +530,6 @@ class ProductsController extends MainController
             'pr_id'     => $id,
             'title_tr' => Input::get('title_tr'),
             'title_en' => Input::get('title_en'),
-            'title_es' => Input::get('title_es'),
             'stok' => Input::get('stok')
         ));
 

@@ -55,7 +55,7 @@
                                     <option value="0"  selected="selected">Yok</option>
                                     @if(count($contents) > 0)
                                         @foreach($contents as $pg)
-                                            <option value="{{ $pg->id }}" @if($pg->id == Input::old('parent_id', $content->parent_id)) selected="selected" @endif>{{ $pg->title_tr }}</option>
+                                            <option value="{{ $pg->id }}" @if($pg->id == Input::old('parent_id', $content->parent_id)) selected="selected" @endif>{{ $pg->title_en }}</option>
                                         @endforeach
                                     @endif
                                 </select>

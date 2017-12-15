@@ -53,11 +53,11 @@
                                 <table class="table table-bordered table-striped" id="users">
                                     <tr>
                                         <td style="width: 25%">Ürün Adı</td>
-                                        <td>{{ $product->title_tr }}</td>
+                                        <td>{{ $product->title_en }}</td>
                                     </tr>
                                     <tr>
                                         <td>Kategori</td>
-                                        <td>{{ $product->categorie->title_tr }}</td>
+                                        <td>{{ $product->categorie->title_en }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -138,7 +138,7 @@
                         @foreach($options as $opt)
                             <div class="todolist_list showactions">
                                 <div class="col-md-8 col-sm-8 col-xs-8 nopadmar custom_textbox1">
-                                    <div class="todotext todoitem">{{ $opt->title_tr }} </div>
+                                    <div class="todotext todoitem">{{ $opt->title_en }} </div>
                                     <div class="todotext todoitem">&nbsp;&nbsp; ( <a href="?setStatus={{ $opt->id }}" class="todoedit" title="Değiştir">
                                             {{ $opt->stok == 0 ? 'Yok' : 'Mevcut' }}
                                         </a> ) </div>

@@ -98,7 +98,7 @@ class ContentsController extends MainController
             return Redirect::to('/admin/contents')->with('error', Lang::get('general.nopermission'));
 
         $rules = array(
-            'title_tr'     => 'required|unique:contents'
+            'title_en'     => 'required|unique:contents'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -108,7 +108,7 @@ class ContentsController extends MainController
         }
 
         $input = Input::except('_token');
-        $input['sefurl'] = Input::get('title_tr');
+        $input['sefurl'] = Input::get('title_en');
         $input['sequence'] = Content::where('parent_id',Input::get('parent_id'))->max('sequence') + 1;
 
         $content = Content::create($input);
@@ -137,7 +137,7 @@ class ContentsController extends MainController
         if($content == null) return Redirect::route('contents')->with('error', Lang::get('contents/message.content_not_found', compact('id')));
 
         $rules = array(
-            'title_tr'     => 'required'
+            'title_en'     => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -148,12 +148,10 @@ class ContentsController extends MainController
         $content->parent_id = Input::get('parent_id');
         $content->title_tr = Input::get('title_tr');
         $content->title_en = Input::get('title_en');
-        $content->title_es = Input::get('title_es');
         $content->content_tr = Input::get('content_tr');
         $content->content_en = Input::get('content_en');
-        $content->content_es = Input::get('content_es');
         $content->status = Input::get('status');
-        $content->sefurl = Input::get('title_tr');
+        $content->sefurl = Input::get('title_en');
 
         if ($content->save()) {
             // Redirect to the setting content

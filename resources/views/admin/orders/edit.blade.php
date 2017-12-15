@@ -61,7 +61,7 @@
                             <div class="col-sm-2">
                                 <select name="status" class="form-control">
                                     @foreach($statuses as $status)
-                                        <option value="{{ $status->id }}" {!! ($status->id == $order->status ? ' selected="selected"' : '') !!}>{{ $status->title_tr }}</option>
+                                        <option value="{{ $status->id }}" {!! ($status->id == $order->status ? ' selected="selected"' : '') !!}>{{ $status->title_en }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -76,7 +76,7 @@
                             <div class="col-sm-2">
                                 <select class="form-control" name="odemeTuru">
                                     @foreach($payMethods as $pmt)
-                                        <option value="{{ $pmt->id }}" @if($order->odemeTuru == $pmt->id) selected="selected" @endif>{{ $pmt->title_tr }}</option>
+                                        <option value="{{ $pmt->id }}" @if($order->odemeTuru == $pmt->id) selected="selected" @endif>{{ $pmt->title_en }}</option>
                                     @endforeach
                                 </select>
                             </div>

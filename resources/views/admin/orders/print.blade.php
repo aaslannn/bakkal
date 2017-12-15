@@ -35,7 +35,7 @@ Sipariş Detayları - {{ $order->id }}
                     <tr>
                         <td>Ödeme</td>
                         <td>
-                            {{{ $order->paymethod->title_tr }}}
+                            {{{ $order->paymethod->title_en }}}
                             @if($order->odemeTuru == 2)
                                 ( {{{ $order->orderbank->bankaAdi }}} - {{{ $order->orderbank->hesapAdi }}})
                             @endif
@@ -43,7 +43,7 @@ Sipariş Detayları - {{ $order->id }}
                     </tr>
                     <tr>
                         <td>Durum</td>
-                        <td>{{ $order->orderstatus->title_tr }}</td>
+                        <td>{{ $order->orderstatus->title_en }}</td>
                     </tr>
                     @if($order->ind_kod != '')
                         <tr>
@@ -76,7 +76,7 @@ Sipariş Detayları - {{ $order->id }}
                         <tr>
                             <td>
                                 @if($detail->product)
-                                    {{ $detail->product->title_tr }} {!! ($detail->option_id ? ' ( <span style="color:#F00;">'.\App\Library\Common::getPropsAndOptions($detail->option_id).'</span> )' : '') !!}
+                                    {{ $detail->product->title_en }} {!! ($detail->option_id ? ' ( <span style="color:#F00;">'.\App\Library\Common::getPropsAndOptions($detail->option_id).'</span> )' : '') !!}
                                 @else - @endif
                             </td>
                             <td class="text-center">{{ $detail->adet }}</td>

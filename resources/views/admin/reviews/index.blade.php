@@ -64,7 +64,7 @@
                                     <tr>
                                         <td>{{{ $review->id }}}</td>
                                         <td>{{ $review->user ? $review->user->first_name.' '.$review->user->last_name : 'Misafir'}}</td>
-                                        <td>{{ $review->product ? $review->product->title_tr : 'Silinmiş Ürün' }}</td>
+                                        <td>{{ $review->product ? $review->product->title_en : 'Silinmiş Ürün' }}</td>
                                         <td>{{{ $review->comment }}}</td>
                                         <td>{{{ $review->rating }}}</td>
                                         <td>{{{ $review->timeago }}}</td>

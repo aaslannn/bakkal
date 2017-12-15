@@ -66,11 +66,11 @@
                                     <tr  {!! $order->status == 1 ? 'class="warning"' : '' !!}>
                                         <td>{{{ $order->id }}}</td>
                                         <td>{{{ $order->customer ? $order->customer->first_name.' '.$order->customer->last_name : 'Silinmiş Üye' }}}</td>
-                                        <td>{{{ $order->paymethod->title_tr }}}</td>
+                                        <td>{{{ $order->paymethod->title_en }}}</td>
                                         <td>{{{ \App\Sabit::yesNo($order->hediye) }}}</td>
                                         <td>{{{ $siteSetting->para_birim.number_format($order->topTutar,2) }}}</td>
                                         <td>{{{ $order->created_at }}}</td>
-                                        <td>{{{ $order->orderstatus->title_tr }}}</td>
+                                        <td>{{{ $order->orderstatus->title_en }}}</td>
                                         <td>
                                             <a href="{{ route('orders.show', $order->id) }}">
                                                 <i class="livicon" data-name="info" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA" title="Detaylar"></i>

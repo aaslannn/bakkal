@@ -35,7 +35,7 @@ class frontProductsController extends FrontController
             $options = $prd->products_options()->where('stok','>',0)->get();
             $banks = PosAccount::whereStatus(1)->orderBy('mainpos','desc')->get();
 
-            $socialLinks = Share::load(URL::full(), Common::getsiteConfigs()->meta_baslik.' / '.$prd->title_tr)->services('facebook', 'twitter', 'gplus');
+            $socialLinks = Share::load(URL::full(), Common::getsiteConfigs()->meta_baslik.' / '.$prd->title_en)->services('facebook', 'twitter', 'gplus');
             return View('urun', compact('prd','reviews','options','url','banks','socialLinks'));
         }
 
@@ -149,8 +149,8 @@ class frontProductsController extends FrontController
                         $result['warning'] = Lang::get('frontend/general.stocklimited', array('stokadet'=>$maxStock), $lang);
 
                     }
-                    if ($data['opt']) Cart::add($prd->id,$prd->title_tr, $data['qty'], $prd->real_price, array('opt' => $data['opt']) );
-                    else Cart::add($prd->id,$prd->title_tr, $data['qty'], $prd->real_price);
+                    if ($data['opt']) Cart::add($prd->id,$prd->title_en, $data['qty'], $prd->real_price, array('opt' => $data['opt']) );
+                    else Cart::add($prd->id,$prd->title_en, $data['qty'], $prd->real_price);
                     $result['success'] = Lang::get('frontend/general.productaddedcart',array(),$lang);
                 }
                 $result['count'] = Cart::count();

@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>{{{ $pm->id }}}</td>
                                         <td>{{{ $pm->sequence }}}</td>
-                                        <td>{{{ $pm->title_tr }}}</td>
+                                        <td>{{{ $pm->title_en }}}</td>
                                         <td>{{{ \App\Sabit::itemStatus($pm->status) }}}</td>
                                         <td>
                                             <a href="{{ route('update/paymethod', $pm->id) }}">

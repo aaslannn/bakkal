@@ -8,7 +8,7 @@ class Translation extends Model
 {
     public $timestamps = false;
     protected $table = 'translations';
-    protected $fillable = ['slug', 'lang_tr', 'lang_en', 'lang_es'];
+    protected $fillable = ['slug', 'lang_tr', 'lang_en'];
 
     public function setSlugAttribute($slug)
     {

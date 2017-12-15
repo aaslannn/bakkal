@@ -56,11 +56,11 @@
                                         <option value="">Yok</option>
                                         @if(count($categories) > 0)
                                             @foreach($categories as $cat)
-                                                <option value="{{ $cat->id }}" @if($cat->id == Input::old('parent_id', $catId)) selected="selected" @endif>{{ $cat->title_tr }}</option>
+                                                <option value="{{ $cat->id }}" @if($cat->id == Input::old('parent_id', $catId)) selected="selected" @endif>{{ $cat->title_en }}</option>
                                                 @if($cat->subcats()->count() > 0)
                                                     <?php $subcats = $cat->subcats()->get(); ?>
                                                     @foreach($subcats as $subcat)
-                                                            <option value="{{ $subcat->id }}" @if($subcat->id == Input::old('parent_id', $catId)) selected="selected" @endif> &nbsp; &raquo; {{ $subcat->title_tr }}</option>
+                                                            <option value="{{ $subcat->id }}" @if($subcat->id == Input::old('parent_id', $catId)) selected="selected" @endif> &nbsp; &raquo; {{ $subcat->title_en }}</option>
                                                     @endforeach
                                                 @endif
                                             @endforeach
