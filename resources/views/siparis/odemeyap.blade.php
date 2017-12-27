@@ -31,7 +31,7 @@
         <div class="CargoPackageDetail">
             <div class="Wizard">
                 <div class="Success"><i class="fa fa-truck"></i><span>{{Lang::get('frontend/general.deliveryinfo')}}</span></div>
-                <div class="Selected"><i class="fa fa-try"></i><span>{{Lang::get('frontend/general.paymentinfo')}}</span></div>
+                <div class="Selected"><i class="fa fa-money"></i><span>{{Lang::get('frontend/general.paymentinfo')}}</span></div>
                 <div class="lastitem"><i class="fa fa-check"></i><span>{{Lang::get('frontend/general.orderapprove')}}</span></div>
             </div>
             <div class="container">
