@@ -11,7 +11,7 @@ class Customer extends Model {
 	protected $table = 'customers';
 	protected $hidden = array('password', 'remember_token','reset_password_code');
 	protected $guarded = array('reset_password_code','activation_code','persist_code');
-	protected $fillable = ['first_name', 'last_name', 'email', 'password', 'dob', 'bio', 'gender', 'country', 'state', 'city', 'town', 'address', 'activated', 'passnohash', 'social_login', 'social_provider', 'social_user_id', 'social_token', 'social_token_secret'];
+	protected $fillable = ['first_name', 'last_name', 'email', 'password', 'dob', 'bio', 'gender', 'country_id', 'state_id', 'city_id', 'town', 'address', 'activated', 'passnohash', 'social_login', 'social_provider', 'social_user_id', 'social_token', 'social_token_secret'];
 
 	/*
 	use SoftDeletes;
@@ -59,8 +59,16 @@ class Customer extends Model {
 	}
 
 	public function countrie() {
-		return $this->belongsTo('App\Countrie','country');
+		return $this->belongsTo('App\Countrie','country_id');
 	}
+
+    public function state() {
+        return $this->belongsTo('App\State','state_id');
+    }
+
+    public function city() {
+        return $this->belongsTo('App\City','city_id');
+    }
 
 	public function adresses() {
 		return $this->hasMany('App\CustomerAddresse','customer_id');

@@ -40,9 +40,9 @@
                         <div class="col-md-9">
                             <div class="HeaderMenu text-right mb-15">
                                 <a href="{{{ route('home') }}}">{{Lang::get('frontend/general.home')}}</a>
-                                <a href="{{{ url('/hakkimizda') }}}">{{Lang::get('frontend/general.about-us')}}</a>
-                                <a href="{{{ url('/iletisim') }}}">{{Lang::get('frontend/general.contact')}}</a>
-                                <a href="{{{ url('/yardim') }}}">{{Lang::get('frontend/general.help')}}</a>
+                                <a href="{{{ url('/about-us') }}}">{{Lang::get('frontend/general.about-us')}}</a>
+                                <a href="{{{ url('/contact') }}}">{{Lang::get('frontend/general.contact')}}</a>
+                                <a href="{{{ url('/help') }}}">{{Lang::get('frontend/general.help')}}</a>
 
                                 @if($siteSettings->catalog != '')
                                     <a href="{{{ url('/').'/uploads/'.$siteSettings->catalog }}}" target="_blank"><i class="fa fa-file-pdf-o mr-5"></i><span>{{ Lang::get('frontend/general.catalog') }}</span></a>

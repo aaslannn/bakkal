@@ -94,7 +94,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group {{ $errors->first('state', 'has-error') }}">
                                                 <label>{{Lang::get('frontend/general.state')}}</label>
-                                                <input type="text" name="state" class="form-control" value="{{{ Input::old('state', $adres->state) }}}">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-star"></i></div>
+                                                    <select class="form-control" name="state_id" id="state">
+                                                        <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                        @foreach($states as $state)
+                                                            <option value="{{ $state->id }}" {!! ($adres->state_id == $state->id ? 'selected="selected"' : '') !!}>{{ $state->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -107,23 +115,17 @@
                                                 <label>{{Lang::get('frontend/general.city')}}</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                                    <input type="text" name="city_id" class="form-control" value="{{{ Input::old('city_id', $adres->city_id) }}}">
+                                                    <select class="form-control" name="city_id" id="city">
+                                                        <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                        @foreach($cities as $city)
+                                                            <option value="{{ $city->id }}" {!! ($adres->city_id == $city->id ? 'selected="selected"' : '') !!}>{{ $city->name }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <br>{!! $errors->first('city', '<span class="help-block">:message</span> ') !!}
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group {{ $errors->first('town', 'has-error') }}">
-                                                <label>{{Lang::get('frontend/general.town')}}</label>
-                                                <input type="text" name="town" class="form-control" value="{{{ Input::old('town', $adres->town) }}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <br>{!! $errors->first('town', '<span class="help-block">:message</span> ') !!}
                                         </div>
                                     </div>
                                     <div class="row">

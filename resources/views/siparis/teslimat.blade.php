@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="form-group hide" id="addressContainer">
                                         <div>
-                                            <button type="button" name="newAddress" id="addNewAddress" class="BtnWarning"><i class="fa fa-save"></i><span>Adresi Kaydet</span></button>
+                                            <button type="button" name="newAddress" id="addNewAddress" class="BtnWarning"><i class="fa fa-save"></i><span>Save Address</span></button>
                                         </div>
                                         <label>{{Lang::get('customers/title.addressname')}}</label>
                                         <div class="input-group">
@@ -98,34 +98,44 @@
                                         <label>{{Lang::get('frontend/general.country')}}</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                            <select class="form-control required" name="country" id="country" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectcountry')}}">
+                                            <select class="form-control required" name="country_id" id="country_id" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectcountry')}}">
                                                 <option value="">{{Lang::get('frontend/general.select')}}..</option>
                                                 @foreach($countries as $ulke)
                                                     <option value="{{ $ulke->id }}" @if($ulke->varsayilan == 1) selected="selected" @endif>{{ $ulke->ulke }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {!! $errors->first('country', '<span class="help-block">:message</span> ') !!}
+                                        {!! $errors->first('country_id', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="form-group {{ $errors->first('state', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.state')}}</label>
-                                        <input class="form-control" value="{{{ Input::old('state') }}}" type="text" name="state" id="state" placeholder="{{Lang::get('frontend/general.onlyforcountries')}}">
-                                        {!! $errors->first('state', '<span class="help-block">:message</span> ') !!}
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-star"></i></div>
+                                            <select class="form-control required" name="state_id" id="state_id" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectcountry')}}">
+                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                @foreach($states as $state)
+                                                    <option value="{{ $state->id }}" @if($state->varsayilan == 1) selected="selected" @endif>{{ $state->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        {!! $errors->first('state_d', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="form-group {{ $errors->first('city', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.city')}}</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                            <input class="form-control required" value="{{{ Input::old('city') }}}" type="text" name="city" id="city"  data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectprovince')}}">
+                                            <select class="form-control required" name="city_id" id="city_id" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectcountry')}}">
+                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{ $city->id }}" @if($city->varsayilan == 1) selected="selected" @endif>{{ $city->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        {!! $errors->first('city', '<span class="help-block">:message</span> ') !!}
+                                        {!! $errors->first('city_id', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="form-group {{ $errors->first('town', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.town')}}</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                            <input class="form-control required" value="{{{ Input::old('town') }}}" type="text" name="town" id="town"  data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseentercounty')}}">
-                                        </div>
+                                        <input class="form-control required" value="{{{ Input::old('town') }}}" type="text" name="town" id="town">
                                         {!! $errors->first('town', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="from-group {{ $errors->first('address', 'has-error') }}">
@@ -167,7 +177,7 @@
                                     </div>
                                     <div class="form-group hide" id="faddressContainer">
                                         <div>
-                                            <button type="button" name="newAddressf" id="addNewAddressf" class="BtnWarning"><i class="fa fa-save"></i><span>Adresi Kaydet</span></button>                                                 </div>
+                                            <button type="button" name="newAddressf" id="addNewAddressf" class="BtnWarning"><i class="fa fa-save"></i><span>Save Address</span></button>                                                 </div>
 
                                         <label>{{Lang::get('customers/title.addressname')}}</label>
                                         <div class="input-group">
@@ -183,31 +193,44 @@
                                         </div>
                                         {!! $errors->first('fisim', '<span class="help-block">:message</span> ') !!}
                                     </div>
-                                    <div class="form-group {{ $errors->first('fcountry', 'has-error') }}">
+                                    <div class="form-group {{ $errors->first('fcountry_id', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.country')}}</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                            <select class="form-control" name="fcountry" id="fcountry">
+                                            <select class="form-control" name="fcountry_id" id="fcountry_id">
                                                 <option value="">{{Lang::get('frontend/general.select')}}..</option>
                                                 @foreach($countries as $ulke)
                                                     <option value="{{ $ulke->id }}" @if($ulke->varsayilan == 1) selected="selected" @endif>{{ $ulke->ulke }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        {!! $errors->first('fcountry', '<span class="help-block">:message</span> ') !!}
+                                        {!! $errors->first('fcountry_id', '<span class="help-block">:message</span> ') !!}
                                     </div>
-                                    <div class="form-group {{ $errors->first('fstate', 'has-error') }}">
+                                    <div class="form-group {{ $errors->first('fstate_id', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.state')}}</label>
-                                        <input class="form-control" type="text" name="fstate" id="fstate" value="{{{ Input::old('fstate') }}}" placeholder="{{Lang::get('frontend/general.onlyforcountries')}}">
-                                        {!! $errors->first('fstate', '<span class="help-block">:message</span> ') !!}
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-star"></i></div>
+                                            <select class="form-control required" name="fstate_id" id="fstate_id" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectstate')}}">
+                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                @foreach($states as $state)
+                                                    <option value="{{ $city->id }}" @if($city->varsayilan == 1) selected="selected" @endif>{{ $state->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        {!! $errors->first('fstate_id', '<span class="help-block">:message</span> ') !!}
                                     </div>
-                                    <div class="form-group {{ $errors->first('fcity', 'has-error') }}">
+                                    <div class="form-group {{ $errors->first('fcity_id', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.city')}}</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                            <input class="form-control" type="text" name="fcity" id="fcity" value="{{{ Input::old('fcity') }}}">
+                                            <select class="form-control required" name="fcity_id" id="fcity_id" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.pleaseselectcity')}}">
+                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                @foreach($cities as $city)
+                                                    <option value="{{ $city->id }}" @if($city->varsayilan == 1) selected="selected" @endif>{{ $city->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        {!! $errors->first('fcity', '<span class="help-block">:message</span> ') !!}
+                                        {!! $errors->first('fcity_id', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="form-group {{ $errors->first('ftown', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.town')}}</label>

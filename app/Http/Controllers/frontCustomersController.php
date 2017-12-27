@@ -99,7 +99,7 @@ class frontCustomersController extends FrontController
         if(Auth::customer()->check())
             return redirect()->intended('/');
 
-        $sozlesme = Content::whereSefurl('uyelik-sozlesmesi')->first();
+        $sozlesme = Content::whereSefurl('membership-aggreement')->first();
         if ($sozlesme) return View('kayit', compact('sozlesme'));
         return View('kayit');
     }

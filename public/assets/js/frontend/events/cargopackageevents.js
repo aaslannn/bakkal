@@ -66,9 +66,9 @@
                     },
                     success: function(data){
                         $('#alici_adi').val(data.name);
-                        $('#country').val(data.country_id);
-                        $('#state').val(data.state);
-                        $('#city').val(data.city_id);
+                        $('#country_id').val(data.country_id);
+                        $('#state_id').val(data.state_id);
+                        $('#city_id').val(data.city_id);
                         $('#town').val(data.town);
                         $('#address').val(data.adres);
                         $('#tel').val(data.tel);
@@ -105,9 +105,9 @@
                     },
                     success: function (data) {
                         $('#fisim').val(data.name);
-                        $('#fcountry').val(data.country_id);
-                        $('#fstate').val(data.state);
-                        $('#fcity').val(data.city_id);
+                        $('#fcountry_id').val(data.country_id);
+                        $('#fstate_id').val(data.state_id);
+                        $('#fcity_id').val(data.city_id);
                         $('#ftown').val(data.town);
                         $('#faddress').val(data.adres);
                         $('#ftel').val(data.tel);
@@ -131,9 +131,9 @@
                 var data = {};
                 data['title'] = $('input[name="adres_adi"]').val();
                 data['name'] = $('input[name="alici_adi"]').val();
-                data['country_id'] = $('#country').val();
-                data['state'] = $('input[name="state"]').val();
-                data['city_id'] = $('input[name="city"]').val();
+                data['country_id'] = $('#country_id').val();
+                data['state_id'] = $('#state_id').val();
+                data['city_id'] = $('#city_id').val();
                 data['town'] = $('input[name="town"]').val();
                 data['adres'] = $('#address').val();
                 data['tel'] = $('input[name="tel"]').val();
@@ -173,9 +173,9 @@
                 var data = {};
                 data['title'] = $('input[name="fadres_adi"]').val();
                 data['name'] = $('input[name="fisim"]').val();
-                data['country_id'] = $('#fcountry').val();
-                data['state'] = $('input[name="fstate"]').val();
-                data['city_id'] = $('input[name="fcity"]').val();
+                data['country_id'] = $('#fcountry_id').val();
+                data['state_id'] = $('#fstate_id').val();
+                data['city_id'] = $('#fcity_id').val();
                 data['town'] = $('input[name="ftown"]').val();
                 data['adres'] = $('#faddress').val();
                 data['tel'] = $('input[name="ftel"]').val();

@@ -154,10 +154,10 @@
                                                         <label>{{Lang::get('frontend/general.country')}}</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                                            <select class="form-control" name="country" id="country">
+                                                            <select class="form-control" name="country_id" id="country_id">
                                                                 <option value="">{{Lang::get('frontend/general.select')}}..</option>
                                                                 @foreach($countries as $ulke)
-                                                                    <option value="{{ $ulke->id }}" {!! ($uye->country == $ulke->id ? 'selected="selected"' : '') !!}>{{ $ulke->ulke }}</option>
+                                                                    <option value="{{ $ulke->id }}" {!! ($uye->country_id == $ulke->id ? 'selected="selected"' : '') !!}>{{ $ulke->ulke }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -171,7 +171,15 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group {{ $errors->first('state', 'has-error') }}">
                                                         <label>{{Lang::get('frontend/general.state')}}</label>
-                                                        <input type="text" name="state" class="form-control" value="{{{ Input::old('state', $uye->state) }}}">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon"><i class="fa fa-star"></i></div>
+                                                            <select class="form-control" name="state_id" id="state_id">
+                                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                                @foreach($states as $state)
+                                                                    <option value="{{ $state->id }}" {!! ($uye->state_id == $state->id ? 'selected="selected"' : '') !!}>{{ $state->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -184,7 +192,12 @@
                                                         <label>{{Lang::get('frontend/general.city')}}</label>
                                                         <div class="input-group">
                                                             <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                                            <input type="text" name="city" class="form-control" value="{{{ Input::old('city', $uye->city) }}}">
+                                                            <select class="form-control" name="city_id" id="city_id">
+                                                                <option value="">{{Lang::get('frontend/general.select')}}..</option>
+                                                                @foreach($cities as $city)
+                                                                    <option value="{{ $city->id }}" {!! ($uye->city_id == $city->id ? 'selected="selected"' : '') !!}>{{ $city->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>

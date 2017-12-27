@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    protected $table = 'iller';
+    protected $table = 'cities';
 
-    public function ilceler() {
-        return $this->hasMany('App\Town','il_id');
+    public function towns() {
+        return $this->hasMany('App\Town','city_id');
     }
 
-    public function ulke() {
+    public function state() {
+        return $this->belongsTo('App\State');
+    }
+
+    public function country() {
         return $this->belongsTo('App\Countrie');
     }
 }

@@ -80,7 +80,7 @@ class FrontController extends Controller {
 			if($islem == 'getCity') //get cities by country
 			{
 				$country = Input::get('country');
-				$cities = City::where('ulke_id',$country)->whereTeslimat(1)->orderBy('il')->lists('il','id');
+				$cities = City::where('ulke_id',$country)->whereTeslimat(1)->orderBy('name')->lists('name','id');
 				return $cities;
 			}
 			if($islem == 'getAdres' && Input::get('uid') > 0) //get address by id
@@ -219,7 +219,7 @@ class FrontController extends Controller {
 				if(!Auth::customer()->check())
 					return array('error'=>Lang::get('frontend/general.pleaselogin',array(),$lang));
 
-				if(Input::get('title') == '' || Input::get('name') == '' || Input::get('city_id') == '' || Input::get('town') == '' || Input::get('adres') == '')
+				if(Input::get('title') == '' || Input::get('name') == '' || Input::get('city_id') == '' || Input::get('state_id') == '' || Input::get('tel') == '')
 					return array('error'=>Lang::get('frontend/general.fill-required-fields',array(),$lang));
 
 				$cust = Auth::customer()->get();
@@ -233,7 +233,7 @@ class FrontController extends Controller {
 					$input['title'] = Input::get('title');
 					$input['name'] = Input::get('name');
 					$input['country_id'] = Input::get('country_id');
-					$input['state'] = Input::get('state');
+					$input['state_id'] = Input::get('state_id');
 					$input['city_id'] = Input::get('city_id');
 					$input['town'] = Input::get('town');
 					$input['adres'] = Input::get('adres');
@@ -260,7 +260,7 @@ class FrontController extends Controller {
 					$adres->title = Input::get('title');
 					$adres->name = Input::get('name');
 					$adres->country_id = Input::get('country_id');
-					$adres->state = Input::get('state');
+					$adres->state_id = Input::get('state_id');
 					$adres->city_id = Input::get('city_id');
 					$adres->town = Input::get('town');
 					$adres->adres = Input::get('adres');

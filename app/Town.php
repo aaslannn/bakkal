@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Town extends Model
 {
-    protected $table = 'ilceler';
+    protected $table = 'towns';
 
-    public function il() {
+    public function city() {
         return $this->belongsTo('App\City');
     }
 }

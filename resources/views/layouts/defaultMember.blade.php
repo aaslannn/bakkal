@@ -51,11 +51,11 @@
         <div class="container text-center">
             <nav>
                 <a href="{{{ url('/') }}}">{{Lang::get('frontend/general.home')}}</a>
-                <a href="{{{ url('/hakkimizda') }}}">{{Lang::get('frontend/general.about-us')}}</a>
-                <a href="{{{ url('/iletisim') }}}">{{Lang::get('frontend/general.contact')}}</a>
-                <a href="{{{ url('/yardim') }}}">{{Lang::get('frontend/general.help')}}</a>
+                <a href="{{{ url('/about-us') }}}">{{Lang::get('frontend/general.about-us')}}</a>
+                <a href="{{{ url('/contact') }}}">{{Lang::get('frontend/general.contact')}}</a>
+                <a href="{{{ url('/help') }}}">{{Lang::get('frontend/general.help')}}</a>
             </nav>
-            <p class="Copyright">Copyright 2015.</p>
+            <p class="Copyright">Copyright 2017.</p>
         </div>
     </footer>
     <!-- //Footer Section End -->
