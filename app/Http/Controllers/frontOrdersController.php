@@ -218,6 +218,9 @@ class frontOrdersController extends FrontController
             // Apply shipment
             if ($topTutar < 500) {
                 $state = State::whereId($order['state_id'])->first();
+                if (!$state) {
+                    return Redirect::back()->withInput()->with('warning', 'Select a state please!');
+                }
                 $kargoTutar = $state->shipping_price;
                 $topTutar += $kargoTutar;
             }
@@ -278,14 +281,7 @@ class frontOrdersController extends FrontController
             $topTutar = number_format($topTutar, 2, '.', '');
             $data['topTutar'] = $topTutar;
 
-            if ($inputs['odemeTuru'] == 1) //CashPayment
-            {
-                $data['status'] = 1; //Onay Bekliyor
-            } elseif ($inputs['odemeTuru'] == 2) //MoneyOrder
-            {
-                $data['status'] = 7; //Ödeme Bekleniyor
-                $data['hesapId'] = $inputs['hesapId'];
-            } elseif ($inputs['odemeTuru'] == 3) //CreditCard
+            if ($inputs['odemeTuru'] == 1) //CreditCard
             {
                 $data['status'] = 7; //Ödeme Bekleniyor
 
