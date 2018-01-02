@@ -53,13 +53,17 @@ class frontOrdersController extends FrontController
             if (Cart::total() == 0)
                 return Redirect::to("/");
 
+            // Check if topTutar is more than the minimum checkout amount
+            if (Cart::total() < 300) {
+                return Redirect::back()->withInput()->with('warning', 'Minimum checkout amount is 300 QAD!');
+            }
+
             $countries = Countrie::whereTeslimat(1)->orderBy('varsayilan', 'desc')->orderBy('ulke', 'asc')->get();
             $states = State::whereTeslimat(1)->orderBy('name', 'asc')->get(); //208:Türkiye
             $cities = City::whereTeslimat(1)->orderBy('name', 'asc')->get(); //208:Türkiye
-            $cargos = Cargo::whereStatus(1)->orderBy('name')->get();
             $tadresler = CustomerAddresse::where('customer_id', $user->id)->whereType(1)->get();
             $fadresler = CustomerAddresse::where('customer_id', $user->id)->whereType(2)->get();
-            return View('siparis.teslimat', compact('user', 'countries', 'states', 'cities', 'tadresler', 'fadresler', 'cargos'));
+            return View('siparis.teslimat', compact('user', 'countries', 'states', 'cities', 'tadresler', 'fadresler'));
         }
         if ($url == 'odeme') {
             if (Cart::total() == 0)
@@ -95,7 +99,6 @@ class frontOrdersController extends FrontController
             $inputs = Input::except('_token');
             $inputs['faturaAyni'] = Input::has('faturaAyni') ? Input::get('faturaAyni') : 0;
             $inputs['hediye'] = Input::has('hediye') ? Input::get('hediye') : 0;
-            $inputs['kargoId'] = Input::has('kargoId') ? Input::get('kargoId') : 0;
 
             if ($inputs['faturaAyni'] == 0) {
                 $rules = array(
@@ -103,27 +106,23 @@ class frontOrdersController extends FrontController
                     'country_id' => 'required|numeric|min:1',
                     'state_id' => 'required|numeric|min:1',
                     'city_id' => 'required|numeric|min:1',
-                    'town' => 'required',
                     'address' => 'required',
                     'tel' => 'required',
                     'fisim' => 'required',
                     'fcountry_id' => 'required|numeric|min:1',
                     'fstate_id' => 'required|numeric|min:1',
                     'fcity_id' => 'required|numeric|min:1',
-                    'ftown' => 'required',
                     'faddress' => 'required',
-                    'ftel' => 'required',
-                    'kargoId' => 'required|numeric|min:1',
+                    'ftel' => 'required'
                 );
             } else {
                 $rules = array(
                     'alici_adi' => 'required|min:3',
-                    'country' => 'required|numeric|min:1',
-                    'city' => 'required|min:2',
-                    'town' => 'required',
+                    'country_id' => 'required|numeric|min:1',
+                    'state_id' => 'required|numeric|min:1',
+                    'city_id' => 'required|min:2',
                     'address' => 'required',
-                    'tel' => 'required',
-                    'kargoId' => 'required|numeric|min:1',
+                    'tel' => 'required'
                 );
             }
 
@@ -199,8 +198,9 @@ class frontOrdersController extends FrontController
                     $kdv += $prdKdv;
                 } else $prdKdv = 0;
 
-                $prdKargo = $prd->kargo_ucret * $row->qty;
-                $kargoTutar += $prdKargo;
+                $prdKargo = 0;
+                // $prdKargo = $prd->kargo_ucret * $row->qty;
+                // $kargoTutar += $prdKargo;
 
                 $topTutar = $topTutar + ($uFiyat * $row->qty) + $prdKargo;
 
@@ -215,9 +215,11 @@ class frontOrdersController extends FrontController
                 $i++;
             }
 
-            if ($topTutar > 500) {
-                $topTutar -= $kargoTutar;
-                $kargoTutar = 0;
+            // Apply shipment
+            if ($topTutar < 500) {
+                $state = State::whereId($order['state_id'])->first();
+                $kargoTutar = $state->shipping_price;
+                $topTutar += $kargoTutar;
             }
 
             $data = array();
@@ -225,7 +227,7 @@ class frontOrdersController extends FrontController
             $data['refNo'] = str_random(8);
             $data['odemeTuru'] = $inputs['odemeTuru'];
             $data['kargoTutar'] = $kargoTutar;
-            $data['kargoId'] = $order['kargoId'];
+            $data['kargoId'] = 1;
             $data['hediye'] = $order['hediye'];
             $data['uyeIp'] = Request::ip();
             $data['alici_adi'] = $order['alici_adi'];
@@ -279,7 +281,6 @@ class frontOrdersController extends FrontController
             if ($inputs['odemeTuru'] == 1) //CashPayment
             {
                 $data['status'] = 1; //Onay Bekliyor
-                $data['kargoId'] = 4; //PTTKargo
             } elseif ($inputs['odemeTuru'] == 2) //MoneyOrder
             {
                 $data['status'] = 7; //Ödeme Bekleniyor
@@ -360,7 +361,7 @@ class frontOrdersController extends FrontController
                 Cart::destroy();
                 Session::forget('order');
 
-                if ($inputs['odemeTuru'] == 3)//Credit card. Pay after order is created.
+                if ($inputs['odemeTuru'] == 1)//Credit card. Pay after order is created.
                 {
                     if ($account) {
                         $cardSuccess = true;
@@ -370,8 +371,7 @@ class frontOrdersController extends FrontController
                             'card_cvc' => $inputs['cvc2'],
                             //'order_id' => sprintf('%010d', $order->id),
                             'order_id' => $order->id,
-                            'amount' => $topTutar,
-                            'inst' => ($inputs['inst'] <= 1 ? 0 : $inputs['inst'])
+                            'amount' => $topTutar
                         ));
 
                         if (!$return) {
@@ -424,7 +424,9 @@ class frontOrdersController extends FrontController
                             }
                             return Redirect::to('siparis/onay')->with('error', $errorMessage)->withInput()->with('sId',$order->id);
                         }*/
-                    } else return Redirect::to('siparis/onay')->with('error', 'POS Ayarları ile ilgili bir sorundan dolayı işleminizi gerçekleştiremiyoruz. Site yönetimi ile irtibata geçiniz.')->withInput()->with('sId', $order->id);
+                    } else {
+                        return Redirect::to('siparis/onay')->with('error', 'POS Ayarları ile ilgili bir sorundan dolayı işleminizi gerçekleştiremiyoruz. Site yönetimi ile irtibata geçiniz.')->withInput()->with('sId', $order->id);
+                    }
                 } else if ($inputs['odemeTuru'] == 6)//Iyzıco. Pay after order is created.
                 {
 
@@ -545,8 +547,7 @@ class frontOrdersController extends FrontController
                     'card_cvc' => $inputs['cvc2'],
                     //'order_id' => sprintf('%010d', $order->id),
                     'order_id' => $order->id,
-                    'amount' => $topTutar,
-                    'inst' => ($inputs['inst'] <= 1 ? 0 : $inputs['inst'])
+                    'amount' => $topTutar
                 ));
             } catch (\Exception $ex) {
                 $cardSuccess = false;

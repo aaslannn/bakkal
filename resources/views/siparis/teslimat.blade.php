@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="form-group {{ $errors->first('town', 'has-error') }}">
                                         <label>{{Lang::get('frontend/general.town')}}</label>
-                                        <input class="form-control required" value="{{{ Input::old('town') }}}" type="text" name="town" id="town">
+                                        <input class="form-control" value="{{{ Input::old('town') }}}" type="text" name="town" id="town">
                                         {!! $errors->first('town', '<span class="help-block">:message</span> ') !!}
                                     </div>
                                     <div class="from-group {{ $errors->first('address', 'has-error') }}">
@@ -279,38 +279,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="DefaultBoxBody AddressDetailTools">
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-3">
-                                <div class="form-group">
-                                    <label>{{Lang::get('frontend/general.shippingfirm')}}</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-star"></i></div>
-                                        <select class="form-control" name="kargoId" id="kargoId" data-rule-required="true" data-msg-required="{{Lang::get('frontend/general.selectcargo')}}">
-                                            <option value="">{{Lang::get('frontend/general.select')}}</option>
-                                            @foreach($cargos as $cargo)
-                                                <option value="{{ $cargo->id }}" {!! Input::old('kargoId') == $cargo->id ? ' selected="selected"' : ''  !!}}>{{ $cargo->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>{{Lang::get('frontend/general.giftwrap')}}</label>
-                                    <select class="form-control" name="hediye" id="hediye">
-                                        <option value="0" {!! Input::old('hediye') == 0 ? ' selected="selected"' : ''  !!}}>{{Lang::get('frontend/general.no')}}</option>
-                                        <option value="1" {!! Input::old('hediye') == 1 ? ' selected="selected"' : ''  !!}}>{{Lang::get('frontend/general.yes')}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="DefaultBoxFooter text-center">
                         <a class="BtnWarning inline-block mr-15" href="{{{ url('/sepet') }}}"><i class="fa fa-arrow-left"></i><span>{{Lang::get('frontend/general.goback')}}</span></a>
                         <button type="submit" class="BtnSuccess inline-block"><i class="fa fa-arrow-right"></i><span>{{Lang::get('frontend/general.nextstep')}}</span></button>
                     </div>
-                </div>
                     <input type="hidden" name="uId" id="uId" value="{{{ $user->id }}}">
                 </form>
             </div>

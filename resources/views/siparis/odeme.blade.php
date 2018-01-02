@@ -365,16 +365,6 @@
                                                             {!! $errors->first('cvc2', '<span class="help-block">:message</span> ') !!}
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>{{Lang::get('frontend/general.selectinst')}}</label>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <select class="form-control" name="inst" id="Instalments">
-                                                                    <option value="1">{{Lang::get('frontend/general.noinst')}}</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="InfoWrapper">
