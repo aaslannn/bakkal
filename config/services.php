@@ -36,19 +36,14 @@ return [
     ],
 	
 	'facebook' => [
-		'client_id' => '1636769806607460',
-		'client_secret' => '6170f625bdfec0145c10e9e5e796b52b',
+		'client_id' => '163718891061423',
+		'client_secret' => '16b5e67353f5ff44ec75c8258cbe4bbd',
 		'redirect' => (PHP_SAPI === 'cli'?false:url('/kayit/facebook')) // url helper function won't work when using cli (php artisan). If really needed, it's posibble add application url to .env file.
 	],
 	
 	'twitter' => [
-		'client_id' => 'HB3za62hSn0GVhf0JklwOwKjh',
-		'client_secret' => 'nv8mzeTUruA1ThEahTu3Jng10G7ZrMHMgHiAgPY42e4Oa6FYdy',
+		'client_id' => 'Zx99CefNr03wZn7Y51MxR6YRx',
+		'client_secret' => '6ldEtQKxJDrtlc1Whsl4BrmGzOp0yugepGyZOELmOKwI9p1V5y',
 		'redirect' => (PHP_SAPI === 'cli'?false:url('/kayit/twitter'))
-	],
-
-    'paypal' => [
-        'client_id' => 'AYmx0okMy4WPulZLuY59T5ga3cLTFTfxzJrAtLKFSJGv_aP8ODoSHKIu4jQ0I-gugXtLJJTebtiQNAPb',
-        'secret' => 'EGIk-_2ph8ytFvV4rXDcfGK_fCcyawmn3G2p3WqNKJbEbNGljVSrX4rGXXaUiqpfGdM9xDZ11R94Fxlc'
-    ],
+	]
 ];
